@@ -1,0 +1,94 @@
+/* Verifyotp.css */
+
+.verify-otp-container {
+  max-width: 400px;
+  margin: 100px auto 40px;
+  padding: 30px 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.verify-otp-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  user-select: none;
+}
+
+.verify-otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.verify-otp-input {
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border: 2px solid #1976d2;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.verify-otp-input:focus {
+  border-color: #004ba0;
+  box-shadow: 0 0 8px rgba(25, 118, 210, 0.3);
+}
+
+.verify-otp-input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.verify-otp-button {
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #1976d2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.verify-otp-button:hover:not(:disabled) {
+  background-color: #004ba0;
+}
+
+.verify-otp-button:disabled {
+  background-color: #7ea7d1;
+  cursor: not-allowed;
+}
+
+.verify-otp-message {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.verify-otp-message.success {
+  color: #2e7d32;
+}
+
+.verify-otp-message.error {
+  color: #d32f2f;
+}
+
+/* Visually hidden label (for accessibility) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
