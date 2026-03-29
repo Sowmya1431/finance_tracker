@@ -298,9 +298,64 @@ app.delete('/delete/:id', verify, async (req, res) => {
   }
 });
 
+// Get user income
+app.get('/income', verify, async (req, res) => {
+  const userId = req.user.userId;
+  try {
+    const user = await Usermodel.findById(userId);
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+    res.send({ income: user.income || 0 });
+  } catch (err) {
+    console.error("Error getting income:", err);
+    res.status(500).send({ message: "Error getting income", error: err.message });
+  }
+});
 
+// Set user income (first time)
+app.post('/setincome', verify, async (req, res) => {
+  const userId = req.user.userId;
+  const { income } = req.body;
 
+  if (!income || isNaN(income) || Number(income) < 0) {
+    return res.status(400).send({ message: "Invalid income amount" });
+  }
 
+  try {
+    const user = await Usermodel.findByIdAndUpdate(
+      userId,
+      { $set: { income: Number(income) } },
+      { new: true }
+    );
+    res.send({ message: "Income set successfully", income: user.income });
+  } catch (err) {
+    console.error("Error setting income:", err);
+    res.status(500).send({ message: "Error setting income", error: err.message });
+  }
+});
+
+// Update user income
+app.put('/updateincome', verify, async (req, res) => {
+  const userId = req.user.userId;
+  const { income } = req.body;
+
+  if (!income || isNaN(income) || Number(income) < 0) {
+    return res.status(400).send({ message: "Invalid income amount" });
+  }
+
+  try {
+    const user = await Usermodel.findByIdAndUpdate(
+      userId,
+      { $set: { income: Number(income) } },
+      { new: true }
+    );
+    res.send({ message: "Income updated successfully", income: user.income });
+  } catch (err) {
+    console.error("Error updating income:", err);
+    res.status(500).send({ message: "Error updating income", error: err.message });
+  }
+});
 
 app.listen(5500, () => {
   console.log("Server running on port 5500");

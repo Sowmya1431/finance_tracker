@@ -12,6 +12,10 @@ Userschema = mongoose.Schema({
     },
     otpexpire:{
         type:Date
+    },
+    income:{
+        type:Number,
+        default:0
     }
 },{timestamps:true})
 
